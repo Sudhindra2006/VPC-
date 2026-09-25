@@ -51,7 +51,8 @@ To create an Amazon Virtual Private Cloud (VPC) with public and private subnets,
 
 
 # RESULT:
-IAM is a foundational aspect of security in cloud environments, helping control and monitor access to resources effectively. By following best practices and regularly auditing IAM configurations, organizations can maintain robust access control, protecting their digital assets from unauthorized access.
+Thus, a VPC was configured, an EC2 instance was launched, and the hosted web application was accessed successfully. 
+
 
 
 
