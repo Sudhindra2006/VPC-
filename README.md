@@ -82,43 +82,30 @@ aws iam create-access-key --user-name NewUser
 •	Requires continuous auditing and updates as roles and permissions evolve.
 •	Proper training and understanding of IAM policies are critical for avoiding misconfigurations.
 
-# Procedure
 
-## Task 1: Create a Virtual Private Cloud (VPC)
+## Procedure
 
-1. Log in to the AWS Management Console and open the **VPC** service.
-2. Select **Create VPC** and choose **VPC and More**.
-3. Configure the VPC with the required CIDR block, public subnet, private subnet, Internet Gateway, and NAT Gateway.
-4. Create the VPC and verify that all resources are created successfully.
+### Task 1: Create a VPC
+1. Open the **AWS VPC Console** and select **Create VPC → VPC and More**.
+2. Configure the **CIDR block, public/private subnets, Internet Gateway, and NAT Gateway**, then create the VPC.
+3. Verify that all VPC resources are created successfully.
 
----
+### Task 2: Create Additional Subnets
+4. Create a **second public subnet** in another Availability Zone.
+5. Create a **second private subnet** and associate it with the appropriate private route table.
+6. Associate the public subnet with the **public route table** and verify the associations.
 
-## Task 2: Create Additional Subnets
+### Task 3: Create a Security Group
+7. Open **Security Groups** and create a group named **Web Security Group**.
+8. Add an inbound rule allowing **HTTP (Port 80) from Anywhere (IPv4)**.
 
-1. Create a second public subnet in another Availability Zone.
-2. Create a second private subnet in the same Availability Zone.
-3. Associate the private route table with the new private subnet.
-4. Associate the public route table with the new public subnet.
-5. Verify the subnet associations.
----
-
-## Task 3: Create a Security Group
-
-1. Navigate to **Security Groups** in the VPC console.
-2. Create a new security group named **Web Security Group**.
-3. Add an inbound rule allowing **HTTP (Port 80)** traffic from **Anywhere (IPv4)**.
-4. Save the security group.
----
-
-## Task 4: Launch an EC2 Web Server
-
-1. Open the **EC2** service and launch a new instance.
-2. Select **Amazon Linux 2023 AMI** and **t2.micro** instance type.
-3. Configure the instance to use the newly created VPC, public subnet, and Web Security Group.
-4. Add the provided user data script to install Apache, PHP, and the sample web application.
-5. Launch the instance and wait until all status checks pass.
-6. Access the web server using the Public IPv4 DNS.
-
+### Task 4: Launch an EC2 Web Server
+9. Open the **EC2 Console** and launch an instance using **Amazon Linux 2023**.
+10. Select the **t2.micro** instance type and configure it with the created VPC and public subnet.
+11. Attach the **Web Security Group** to the instance.
+12. Add the provided **User Data script** to install Apache, PHP, and the sample web application.
+13. Launch the instance and wait until all **status checks pass**.
+14. Access the web server using its **Public IPv4 DNS** and verify that the application is running.
 ---
 # OUTPUT:
 <img width="1040" height="455" alt="image" src="https://github.com/user-attachments/assets/6792d2d8-cedb-4e7d-8463-6b3bc07ff421" />
