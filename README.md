@@ -82,6 +82,44 @@ aws iam create-access-key --user-name NewUser
 •	Requires continuous auditing and updates as roles and permissions evolve.
 •	Proper training and understanding of IAM policies are critical for avoiding misconfigurations.
 
+# Procedure
+
+## Task 1: Create a Virtual Private Cloud (VPC)
+
+1. Log in to the AWS Management Console and open the **VPC** service.
+2. Select **Create VPC** and choose **VPC and More**.
+3. Configure the VPC with the required CIDR block, public subnet, private subnet, Internet Gateway, and NAT Gateway.
+4. Create the VPC and verify that all resources are created successfully.
+
+---
+
+## Task 2: Create Additional Subnets
+
+1. Create a second public subnet in another Availability Zone.
+2. Create a second private subnet in the same Availability Zone.
+3. Associate the private route table with the new private subnet.
+4. Associate the public route table with the new public subnet.
+5. Verify the subnet associations.
+---
+
+## Task 3: Create a Security Group
+
+1. Navigate to **Security Groups** in the VPC console.
+2. Create a new security group named **Web Security Group**.
+3. Add an inbound rule allowing **HTTP (Port 80)** traffic from **Anywhere (IPv4)**.
+4. Save the security group.
+---
+
+## Task 4: Launch an EC2 Web Server
+
+1. Open the **EC2** service and launch a new instance.
+2. Select **Amazon Linux 2023 AMI** and **t2.micro** instance type.
+3. Configure the instance to use the newly created VPC, public subnet, and Web Security Group.
+4. Add the provided user data script to install Apache, PHP, and the sample web application.
+5. Launch the instance and wait until all status checks pass.
+6. Access the web server using the Public IPv4 DNS.
+
+---
 # OUTPUT:
 <img width="1040" height="455" alt="image" src="https://github.com/user-attachments/assets/6792d2d8-cedb-4e7d-8463-6b3bc07ff421" />
 <img width="1898" height="847" alt="image" src="https://github.com/user-attachments/assets/33ac319f-28d5-4479-bd59-da006aefd575" />
